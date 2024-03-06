@@ -8,7 +8,7 @@ const About = () => {
                 <p className='text-4xl font-bold border-b-4 inline border-gray-500'>About</p>
             </div>
             <p className='text-xl mt-20'>
-Certainly! Here's some content for the About section of your portfolio website:
+
 
 Welcome to my portfolio! 🚀
 

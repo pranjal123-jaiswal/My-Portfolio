@@ -12,37 +12,66 @@ const Portfolio = () => {
     const Portfolio = [
         {
             id:1,
-            src: bootstrap
+            src: bootstrap,
+            demo: "",
+            code: "https://github.com/pranjal123-jaiswal/Dynamic-Website"
         },
         {
             id:2,
-            src: ecommerce
+            src: ecommerce,
+            demo: "https://react-e-commerce-website-seven.vercel.app/",
+            code: "https://github.com/pranjal123-jaiswal/React_E_commerce_website"
         },
         {
             id:3,
-            src: MVC
+            src: MVC,
+            demo: "",
+            code: "https://github.com/pranjal123-jaiswal/node-MVC-starter"
         },
         {
             id:4,
-            src: Notes
+            src: Notes,
+            demo: "https://vercel.com/pranjal123-jaiswal/notes-crud-frontend",
+            code: "https://github.com/pranjal123-jaiswal/Notes-CRUD--Frontend"
         },
         {
             id:5,
-            src: razor
+            src: razor,
+            demo: "",
+            code: "https://github.com/pranjal123-jaiswal/RAZORPAY-FRONTEND"
         },
         {
             id:6,
-            src: THEME
+            src: THEME,
+            demo: "https://curd-operation-theme-changer.vercel.app/",
+            code: "https://github.com/pranjal123-jaiswal/CURD-OPERATION_Theme_Changer"
         },
         {
             id:7,
-            src: video
+            src: video,
+            demo: "",
+            code: "https://github.com/pranjal123-jaiswal/Video_Streaming_Frontend"
         },
         {
             id:8,
-            src: videocalling
+            src: videocalling,
+            demo: "",
+            code: "https://github.com/pranjal123-jaiswal/Video_Chat_Application"
         }
     ]
+
+ const handleClick = (link) => {
+        if (link) {
+          window.open(link, '_blank');
+        }
+      };
+    
+const sortedPortfolio = Portfolio.sort((a, b) => {
+        if (a.demo && !b.demo) return -1;
+        if (!a.demo && b.demo) return 1;
+        return 0;
+      });
+
   return (
     <div name="Portfolio" className='bg-gradient-to-b from-black to-gray-800 w-full h-auto text-white'>
         <div className='max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full'>
@@ -54,18 +83,23 @@ const Portfolio = () => {
 
             <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0'>
             {
-                Portfolio.map(({id , src}) => (
-                    
-                <div  key={id} className='shadow-md shadow-gray-600 rounded-lg'>
-                    <img src={src} alt="" className='rounded-md duration-200 hover:scale-105'/>
-                    <div className='flex items-center justify-center'>
-                        <button className='w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105'>Demo</button>
-                        <button  className='w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105'>Code</button>
-                    </div>
-                </div>
-            // </div>
-                ))
-            }
+  sortedPortfolio.map(({ id, src, demo, code }) => (
+    <div key={id} className='shadow-md shadow-gray-600 rounded-lg'>
+      <img src={src} alt="" className='rounded-md duration-200 hover:scale-105' />
+      <div className='flex items-center justify-center'>
+        {demo ? (
+          <>
+            <button className='w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105' onClick={() => handleClick(demo)}>Demo</button>
+            <button className='w-full px-6 py-3 m-4 duration-200 hover:scale-105' onClick={() => handleClick(code)}>Code</button>
+          </>
+        ) : (
+          <button className='w-full px-6 py-3 m-4 duration-200 hover:scale-105' onClick={() => handleClick(code)}>Code</button>
+        )}
+      </div>
+    </div>
+  ))
+}
+
             </div>
 
             
